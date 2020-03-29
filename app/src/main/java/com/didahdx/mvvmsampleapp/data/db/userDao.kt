@@ -11,7 +11,7 @@ import com.didahdx.mvvmsampleapp.data.db.entities.User
 @Dao
 interface userDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun updateInsert(user:User):Long
+   suspend fun updateInsert(user:User):Long
 
     @Query("SELECT * FROM user WHERE uid=$CURRENT_USER_ID")
     fun getUser():LiveData<User>
