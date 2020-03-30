@@ -4,6 +4,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.didahdx.mvvmsampleapp.Utils.ApiException
 import com.didahdx.mvvmsampleapp.Utils.Coroutines
+import com.didahdx.mvvmsampleapp.Utils.NoInternetException
 import com.didahdx.mvvmsampleapp.data.repositories.UserRepository
 
 class AuthViewModel (private val userRepository: UserRepository): ViewModel() {
@@ -33,6 +34,8 @@ class AuthViewModel (private val userRepository: UserRepository): ViewModel() {
                }
                authListener?.onFailure(loginResponse.message!!)
            }catch (e:ApiException){
+               authListener?.onFailure(e.message!!)
+           }catch (e:NoInternetException){
                authListener?.onFailure(e.message!!)
            }
         }

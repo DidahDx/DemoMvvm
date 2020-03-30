@@ -16,6 +16,7 @@ import com.didahdx.mvvmsampleapp.Utils.toast
 import com.didahdx.mvvmsampleapp.data.db.AppDatabase
 import com.didahdx.mvvmsampleapp.data.db.entities.User
 import com.didahdx.mvvmsampleapp.data.network.MyApi
+import com.didahdx.mvvmsampleapp.data.network.NetworkConnectionInterceptor
 import com.didahdx.mvvmsampleapp.data.repositories.UserRepository
 import com.didahdx.mvvmsampleapp.databinding.ActivityMainBinding
 import com.didahdx.mvvmsampleapp.ui.home.HomeActivity
@@ -45,7 +46,8 @@ class MainActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val api = MyApi()
+        val networkConnectionInterceptor=NetworkConnectionInterceptor(this)
+        val api = MyApi(networkConnectionInterceptor)
         val db = AppDatabase(this)
         val repository = UserRepository(api, db)
         val factory = AuthViewModelFactory(repository)
