@@ -24,6 +24,14 @@ class UserRepository(
         }
     }
 
+    //used to call remote repository
+    suspend fun userSignUp(name:String,email: String, password: String): AuthResponse {
+        return apiRequest {
+            api.userSignUp(name,email, password)
+        }
+    }
+
+
     fun getUser() = db.getUserDao().getUser()
 
 
