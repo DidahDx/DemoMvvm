@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.didahdx.mvvmsampleapp.data.db.entities.User
 
-@Database(entities = [User::class],version = 1)
+@Database(entities = [User::class],exportSchema = false,version = 1)
 abstract class AppDatabase :RoomDatabase() {
 
     abstract fun getUserDao():userDao
