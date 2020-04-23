@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    android:label="Profile"
     app:startDestination="@id/profileFragment">
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.didahdx.mvvmsampleapp.ui.home.profile.ProfileFragment"
-        android:label="profile_fragment"
+        android:label="Profile"
         tools:layout="@layout/profile_fragment" />
 </navigation>
